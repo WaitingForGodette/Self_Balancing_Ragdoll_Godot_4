@@ -1,0 +1,358 @@
+[gd_scene load_steps=15 format=3 uid="uid://fbaeit887tj7"]
+
+[ext_resource type="Script" path="res://rigidRagdoll/GeneralRagdoll.gd" id="1_32hib"]
+[ext_resource type="PackedScene" uid="uid://d1ptm8bbi4erv" path="res://rigidRagdoll/StumbleFootScene.tscn" id="2_ihrqp"]
+
+[sub_resource type="BoxShape3D" id="38"]
+size = Vector3(0.30429, 0.150152, 0.174038)
+
+[sub_resource type="BoxShape3D" id="37"]
+size = Vector3(0.213174, 0.178684, 0.173306)
+
+[sub_resource type="CapsuleShape3D" id="22"]
+radius = 0.095878
+height = 0.191756
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bda41"]
+radius = 0.04
+height = 0.2
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_aud1y"]
+radius = 0.035
+height = 0.15
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1gw00"]
+radius = 0.04
+height = 0.08
+
+[sub_resource type="CapsuleShape3D" id="28"]
+radius = 0.04
+height = 0.2
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fnvsw"]
+radius = 0.035
+height = 0.15
+
+[sub_resource type="CapsuleShape3D" id="30"]
+radius = 0.04
+height = 0.08
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bavl7"]
+radius = 0.06
+height = 0.28
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d640e"]
+radius = 0.06
+height = 0.28
+
+[sub_resource type="CapsuleShape3D" id="34"]
+radius = 0.06
+height = 0.28
+
+[node name="Spatial" type="Node3D"]
+script = ExtResource("1_32hib")
+
+[node name="rigidBodyParent" type="Node3D" parent="."]
+
+[node name="Hips" type="RigidBody3D" parent="rigidBodyParent"]
+transform = Transform3D(1, 0, 0, 0, 1, -2.01108e-07, 0, 2.01108e-07, 1, 0.0024284, 0.897019, 0.00125367)
+collision_layer = 16777217
+collision_mask = 3
+mass = 3.5
+contact_monitor = true
+can_sleep = false
+
+[node name="CollisionShape" type="CollisionShape3D" parent="rigidBodyParent/Hips"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0545555, -0.0127532)
+shape = SubResource("38")
+
+[node name="Spine1" type="RigidBody3D" parent="rigidBodyParent"]
+transform = Transform3D(1, 0, 0, 0, 0.992339, -0.123549, 0, 0.12355, 0.992338, 0.0024284, 1.05961, 0.0153241)
+collision_layer = 16777217
+collision_mask = 3
+mass = 3.0
+gravity_scale = -1.5
+contact_monitor = true
+can_sleep = false
+
+[node name="CollisionShape" type="CollisionShape3D" parent="rigidBodyParent/Spine1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00317132, 0.00027702)
+shape = SubResource("37")
+
+[node name="Spine2" type="RigidBody3D" parent="rigidBodyParent"]
+transform = Transform3D(1, -1.79671e-09, -7.83203e-11, 1.79671e-09, 0.996207, 0.087016, -7.83198e-11, -0.087016, 0.996207, 0.0024284, 1.19714, -0.0249616)
+collision_layer = 16777217
+collision_mask = 3
+mass = 3.5
+gravity_scale = -1.5
+contact_monitor = true
+can_sleep = false
+
+[node name="CollisionShape" type="CollisionShape3D" parent="rigidBodyParent/Spine2"]
+transform = Transform3D(1, 4.93963e-16, 0, -2.86229e-17, 1, 0, 0, 0, 1, 4.65661e-10, 0.057992, 0.00506545)
+shape = SubResource("37")
+
+[node name="Spatial" type="Node3D" parent="rigidBodyParent/Spine2"]
+transform = Transform3D(1, 9.25909e-16, 5.55112e-17, -2.86229e-17, 1, 0, 0, 0, 1, -0.129805, 0.0997138, 0.00870974)
+
+[node name="Head" type="RigidBody3D" parent="rigidBodyParent"]
+transform = Transform3D(1, 1.9082e-16, -1.47451e-17, -2.38091e-16, 1, -2.10486e-07, 2.1684e-17, 1.95585e-07, 1, 0.0024284, 1.37194, -0.0291619)
+collision_layer = 16777217
+collision_mask = 3
+mass = 4.5
+gravity_scale = -2.0
+contact_monitor = true
+can_sleep = false
+
+[node name="CollisionShape" type="CollisionShape3D" parent="rigidBodyParent/Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.120849, 0.0285619)
+shape = SubResource("22")
+
+[node name="LeftArm" type="RigidBody3D" parent="rigidBodyParent"]
+transform = Transform3D(0.00259255, 0.996949, -0.078013, -0.090377, -0.0774605, -0.992891, -0.995904, 0.00962479, 0.0899003, 0.156592, 1.29726, -0.0360023)
+collision_layer = 16777217
+collision_mask = 3
+mass = 1.4
+gravity_scale = 0.0
+can_sleep = false
+
+[node name="CollisionShape" type="CollisionShape3D" parent="rigidBodyParent/LeftArm"]
+transform = Transform3D(0.999999, 0, 7.45058e-09, 0, 1, -2.38651e-09, 7.45058e-09, -7.91624e-09, 1, 0.00128236, 0.121644, 0.00118232)
+shape = SubResource("CapsuleShape3D_bda41")
+
+[node name="LeftForeArm" type="RigidBody3D" parent="rigidBodyParent"]
+transform = Transform3D(-0.0343476, 0.99891, -0.0316143, -0.0874424, -0.0345154, -0.995571, -0.995577, -0.031431, 0.0885326, 0.390004, 1.27912, -0.0337489)
+collision_layer = 16777217
+collision_mask = 3
+gravity_scale = 0.0
+can_sleep = false
+
+[node name="CollisionShape" type="CollisionShape3D" parent="rigidBodyParent/LeftForeArm"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00332807, 0.0967886, -0.00306368)
+shape = SubResource("CapsuleShape3D_aud1y")
+
+[node name="LeftHand" type="RigidBody3D" parent="rigidBodyParent"]
+transform = Transform3D(-0.0892791, 0.986085, 0.140236, 0.475893, 0.165919, -0.863711, -0.87496, -0.010374, -0.484084, 0.579839, 1.27256, -0.0397221)
+collision_layer = 16777217
+collision_mask = 3
+mass = 0.8
+gravity_scale = 0.1
+contact_monitor = true
+can_sleep = false
+
+[node name="CollisionShape" type="CollisionShape3D" parent="rigidBodyParent/LeftHand"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00819111, 0.0730165, 0.00951326)
+shape = SubResource("CapsuleShape3D_1gw00")
+
+[node name="RightArm" type="RigidBody3D" parent="rigidBodyParent"]
+transform = Transform3D(0.00476573, -0.996925, 0.0782179, 0.0912408, -0.0774591, -0.992812, 0.995817, 0.0118682, 0.0905911, -0.151735, 1.29726, -0.0363911)
+collision_layer = 16777217
+collision_mask = 3
+mass = 1.4
+can_sleep = false
+
+[node name="CollisionShape" type="CollisionShape3D" parent="rigidBodyParent/RightArm"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00175948, 0.117795, 0.00390851)
+shape = SubResource("28")
+
+[node name="RightForeArm" type="RigidBody3D" parent="rigidBodyParent"]
+transform = Transform3D(-0.0370019, -0.998823, 0.0313594, 0.0879174, -0.034513, -0.995529, 0.99544, -0.0340793, 0.089091, -0.385147, 1.27912, -0.0336124)
+collision_layer = 16777217
+collision_mask = 3
+can_sleep = false
+
+[node name="CollisionShape" type="CollisionShape3D" parent="rigidBodyParent/RightForeArm"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00353699, 0.0954763, -0.00299752)
+shape = SubResource("CapsuleShape3D_fnvsw")
+
+[node name="RightHand" type="RigidBody3D" parent="rigidBodyParent"]
+transform = Transform3D(-0.000242535, -0.983647, -0.180109, -0.532592, 0.152566, -0.832507, 0.846372, 0.0957228, -0.523919, -0.574982, 1.27256, -0.0400895)
+collision_layer = 16777217
+collision_mask = 3
+mass = 0.8
+gravity_scale = 0.1
+contact_monitor = true
+can_sleep = false
+
+[node name="CollisionShape" type="CollisionShape3D" parent="rigidBodyParent/RightHand"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0121465, 0.0514699, 0.00166148)
+shape = SubResource("30")
+
+[node name="LeftUpLeg" type="RigidBody3D" parent="rigidBodyParent"]
+transform = Transform3D(-0.999675, 0.0254958, 0.000198313, -0.0254927, -0.999627, 0.00975994, 0.000447077, 0.00975171, 0.999952, 0.0912959, 0.849354, -0.000682651)
+collision_layer = 16777217
+collision_mask = 3
+mass = 2.0
+gravity_scale = 0.0
+can_sleep = false
+
+[node name="CollisionShape" type="CollisionShape3D" parent="rigidBodyParent/LeftUpLeg"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00976131, 0.226461, -0.00221284)
+shape = SubResource("CapsuleShape3D_bavl7")
+
+[node name="LeftLeg" type="RigidBody3D" parent="rigidBodyParent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.103, 0.246, 0)
+mass = 1.5
+gravity_scale = 0.0
+
+[node name="CollisionShape" type="CollisionShape3D" parent="rigidBodyParent/LeftLeg"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00906757, 0.0284226, -0.0140457)
+shape = SubResource("CapsuleShape3D_d640e")
+
+[node name="RightUpLeg" type="RigidBody3D" parent="rigidBodyParent"]
+transform = Transform3D(-0.999675, -0.0254928, -3.65996e-05, 0.0254911, -0.999624, 0.0100813, -0.000293587, 0.0100771, 0.999949, -0.0864391, 0.849354, -0.00227666)
+collision_layer = 16777217
+collision_mask = 3
+mass = 2.0
+gravity_scale = 0.0
+can_sleep = false
+
+[node name="CollisionShape" type="CollisionShape3D" parent="rigidBodyParent/RightUpLeg"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00541358, 0.224286, -0.00225869)
+shape = SubResource("34")
+
+[node name="RightLeg" type="RigidBody3D" parent="rigidBodyParent"]
+transform = Transform3D(0.9987, 0.0509689, -0.000257005, -0.0509689, 0.9987, 2.48461e-06, 0.000256798, 1.06179e-05, 1, -0.101706, 0.246, 0)
+mass = 1.5
+gravity_scale = 0.0
+
+[node name="CollisionShape" type="CollisionShape3D" parent="rigidBodyParent/RightLeg"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00430572, 0.0285704, -0.0156391)
+shape = SubResource("34")
+
+[node name="LeftFoot" parent="rigidBodyParent" instance=ExtResource("2_ihrqp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0, 0)
+collision_mask = 3
+mass = 12.0
+
+[node name="RightFoot" parent="rigidBodyParent" instance=ExtResource("2_ihrqp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0, 0)
+collision_mask = 3
+mass = 12.0
+
+[node name="JOINT_Hips_Spine1" type="Generic6DOFJoint3D" parent="rigidBodyParent"]
+transform = Transform3D(1, 0, 0, 0, 0.996207, 0.087016, 0, -0.087016, 0.996207, 0.0024284, 0.896502, -0.00623641)
+visible = false
+node_a = NodePath("../Hips")
+node_b = NodePath("../Spine1")
+angular_limit_x/upper_angle = 0.296706
+angular_limit_x/lower_angle = -0.349066
+angular_limit_z/upper_angle = 0.296706
+angular_limit_z/lower_angle = -0.296706
+
+[node name="JOINT_Spine1_Spine2" type="Generic6DOFJoint3D" parent="rigidBodyParent"]
+transform = Transform3D(1, -1.79671e-09, -7.83203e-11, 1.79671e-09, 0.996207, 0.087016, -7.83198e-11, -0.087016, 0.996207, 0.0024284, 1.07794, -0.0249616)
+visible = false
+node_a = NodePath("../Spine1")
+node_b = NodePath("../Spine2")
+angular_limit_x/upper_angle = 0.0872665
+angular_limit_x/lower_angle = -0.0872665
+
+[node name="JOINT_Spine2_Head" type="Generic6DOFJoint3D" parent="rigidBodyParent"]
+transform = Transform3D(1, 1.9082e-16, -1.38778e-17, -2.38091e-16, 1, -2.08616e-07, 2.08167e-17, 1.93715e-07, 1, 0.0024284, 1.32577, -0.0361967)
+visible = false
+node_a = NodePath("../Spine2")
+node_b = NodePath("../Head")
+angular_limit_x/upper_angle = 0.20944
+angular_limit_x/lower_angle = -0.20944
+
+[node name="JOINT_Spine2_LeftArm" type="Generic6DOFJoint3D" parent="rigidBodyParent"]
+transform = Transform3D(0.00259255, 0.996949, -0.078013, -0.090377, -0.0774605, -0.992891, -0.995904, 0.00962479, 0.0899003, 0.156592, 1.29726, -0.0360023)
+visible = false
+node_a = NodePath("../Spine2")
+node_b = NodePath("../LeftArm")
+angular_limit_x/upper_angle = 1.5708
+angular_limit_x/lower_angle = -1.5708
+angular_limit_z/upper_angle = 1.39626
+angular_limit_z/lower_angle = -0.349066
+
+[node name="JOINT_LeftArm_LeftForeArm" type="Generic6DOFJoint3D" parent="rigidBodyParent"]
+transform = Transform3D(-0.0343476, 0.99891, -0.0316142, -0.087442, -0.0345152, -0.995571, -0.995577, -0.0314311, 0.0885321, 0.390004, 1.27912, -0.0337489)
+visible = false
+node_a = NodePath("../LeftArm")
+node_b = NodePath("../LeftForeArm")
+angular_limit_x/upper_angle = 0.20944
+angular_limit_x/lower_angle = -0.20944
+angular_limit_y/upper_angle = 0.314159
+angular_limit_y/lower_angle = -0.314159
+angular_limit_z/lower_angle = -1.5708
+
+[node name="JOINT_LeftForeArm_LeftHand" type="Generic6DOFJoint3D" parent="rigidBodyParent"]
+transform = Transform3D(-0.0892791, 0.986085, 0.140236, 0.475893, 0.165919, -0.863711, -0.87496, -0.010374, -0.484084, 0.579839, 1.27256, -0.0397221)
+visible = false
+node_a = NodePath("../LeftForeArm")
+node_b = NodePath("../LeftHand")
+angular_limit_z/upper_angle = 0.244346
+
+[node name="JOINT_Spine2_RightArm" type="Generic6DOFJoint3D" parent="rigidBodyParent"]
+transform = Transform3D(0.00476573, -0.996925, 0.0782179, 0.0912408, -0.0774591, -0.992812, 0.995817, 0.0118682, 0.0905911, -0.151735, 1.29726, -0.0363911)
+visible = false
+node_a = NodePath("../Spine2")
+node_b = NodePath("../RightArm")
+angular_limit_x/upper_angle = 1.5708
+angular_limit_x/lower_angle = -1.5708
+angular_limit_z/upper_angle = 0.349066
+angular_limit_z/lower_angle = -1.39626
+
+[node name="JOINT_RightArm_RightForeArm" type="Generic6DOFJoint3D" parent="rigidBodyParent"]
+transform = Transform3D(-0.0370019, -0.998823, 0.0313594, 0.0879174, -0.034513, -0.995529, 0.99544, -0.0340793, 0.089091, -0.385147, 1.27912, -0.0336124)
+visible = false
+node_a = NodePath("../RightArm")
+node_b = NodePath("../RightForeArm")
+angular_limit_x/upper_angle = 0.20944
+angular_limit_x/lower_angle = -0.20944
+angular_limit_y/upper_angle = 0.314159
+angular_limit_y/lower_angle = -0.314159
+angular_limit_z/upper_angle = 1.5708
+
+[node name="JOINT_RightForeArm_RightHand" type="Generic6DOFJoint3D" parent="rigidBodyParent"]
+transform = Transform3D(-0.000242535, -0.983647, -0.180109, -0.532592, 0.152566, -0.832507, 0.846372, 0.0957228, -0.523919, -0.574982, 1.27256, -0.0400895)
+visible = false
+node_a = NodePath("../RightForeArm")
+node_b = NodePath("../RightHand")
+angular_limit_z/lower_angle = -0.244346
+
+[node name="JOINT_Hips_LeftUpLeg" type="Generic6DOFJoint3D" parent="rigidBodyParent"]
+transform = Transform3D(-0.999873, 0.0254959, 0.000198315, -0.0254978, -0.999627, 0.00976005, 0.000447166, 0.00975171, 0.999963, 0.0912959, 0.849354, -0.000682651)
+visible = false
+node_a = NodePath("../Hips")
+node_b = NodePath("../LeftUpLeg")
+angular_limit_x/upper_angle = 0.523599
+angular_limit_x/lower_angle = -0.523599
+
+[node name="JOINT_LeftUpLeg_LeftLeg" type="Generic6DOFJoint3D" parent="rigidBodyParent"]
+transform = Transform3D(-0.999873, 0.0254959, 0.000198315, -0.0253848, -0.995805, 0.087908, 0.00243923, 0.0878734, 0.996139, 0.0912959, 0.45522, -0.000682652)
+visible = false
+node_a = NodePath("../LeftUpLeg")
+node_b = NodePath("../LeftLeg")
+angular_limit_x/upper_angle = 1.13446
+
+[node name="JOINT_Hips_RightUpLeg" type="Generic6DOFJoint3D" parent="rigidBodyParent"]
+transform = Transform3D(-0.999615, -0.0254928, -3.65991e-05, 0.0254896, -0.999624, 0.0100812, -0.000293569, 0.0100771, 0.999935, -0.0864391, 0.849354, -0.00227666)
+visible = false
+node_a = NodePath("../Hips")
+node_b = NodePath("../RightUpLeg")
+angular_limit_x/upper_angle = 0.523599
+angular_limit_x/lower_angle = -0.523599
+
+[node name="JOINT_RightUpLeg_RightLeg" type="Generic6DOFJoint3D" parent="rigidBodyParent"]
+transform = Transform3D(-0.999615, -0.0254928, -3.6599e-05, 0.0254896, -0.999624, 0.0100812, -0.000293569, 0.0100771, 0.999935, -0.0864391, 0.43826, -0.00227666)
+visible = false
+node_a = NodePath("../RightUpLeg")
+node_b = NodePath("../RightLeg")
+angular_limit_x/upper_angle = 1.13446
+
+[node name="JOINT_LeftLeg_LeftFoot" type="Generic6DOFJoint3D" parent="rigidBodyParent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0994872, 0.0789451, 0)
+visible = false
+node_a = NodePath("../LeftLeg")
+node_b = NodePath("../LeftFoot")
+
+[node name="JOINT_RightLeg_RightFoot" type="Generic6DOFJoint3D" parent="rigidBodyParent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0993429, 0.0789451, 0)
+visible = false
+node_a = NodePath("../RightLeg")
+node_b = NodePath("../RightFoot")
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.34574, 0)

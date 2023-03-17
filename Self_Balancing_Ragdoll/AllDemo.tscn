@@ -1,0 +1,88 @@
+[gd_scene load_steps=14 format=3 uid="uid://ca8ctier1v18f"]
+
+[ext_resource type="Script" path="res://BallShooter.gd" id="1_hkhdj"]
+[ext_resource type="PackedScene" uid="uid://dnay8dfraytp2" path="res://rigidRagdoll/GeneralRagdoll_GodetteMixamo.tscn" id="2_d3qyg"]
+[ext_resource type="PackedScene" uid="uid://bb10qfyh5pyny" path="res://rigidRagdoll/SimpleRR.tscn" id="3_0wmkl"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fdf03"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_gmtb4"]
+sky_material = SubResource("ProceduralSkyMaterial_fdf03")
+
+[sub_resource type="Environment" id="Environment_kjh4m"]
+background_mode = 2
+sky = SubResource("Sky_gmtb4")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7wrh1"]
+albedo_color = Color(0.360784, 0.670588, 0.313726, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_mw5ve"]
+material = SubResource("StandardMaterial3D_7wrh1")
+size = Vector3(20, 1, 20)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_2nxek"]
+points = PackedVector3Array(-10, -0.5, -10, -10, 0.5, -10, 10, -0.5, -10, -10, -0.5, 10, -10, 0.5, 10, 10, 0.5, -10, 10, -0.5, 10, 10, 0.5, 10)
+
+[sub_resource type="SphereMesh" id="SphereMesh_84ct4"]
+radius = 1.0
+height = 2.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_5v2o4"]
+radius = 1.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_2gbc3"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wiceh"]
+
+[node name="TestWorld" type="Node3D"]
+script = ExtResource("1_hkhdj")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_kjh4m")
+
+[node name="Floor" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+mesh = SubResource("BoxMesh_mw5ve")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("ConvexPolygonShape3D_2nxek")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.928486, 0.371368, 0, -0.371368, 0.928486, 0, 2.39829, 1.60411)
+
+[node name="Ball" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.75157, 0)
+mass = 30.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ball"]
+mesh = SubResource("SphereMesh_84ct4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ball"]
+shape = SubResource("SphereShape3D_5v2o4")
+
+[node name="DemoRagdolls" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.17829)
+
+[node name="generalRR" parent="DemoRagdolls" instance=ExtResource("2_d3qyg")]
+
+[node name="simpleRR" parent="DemoRagdolls" instance=ExtResource("3_0wmkl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.945939, 0, -0.605967)
+
+[node name="mightyBean" type="RigidBody3D" parent="DemoRagdolls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.05889, 1, -0.578593)
+mass = 18.0
+center_of_mass_mode = 1
+center_of_mass = Vector3(0, -1, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="DemoRagdolls/mightyBean"]
+mesh = SubResource("CapsuleMesh_2gbc3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DemoRagdolls/mightyBean"]
+shape = SubResource("CapsuleShape3D_wiceh")
